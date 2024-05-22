@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lobster&family=Mukta+Vaani:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Sofia&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+      <style>
+         *{
+         padding:none;
+         box-sizing:border-box;
+         margin:0;}
+         .nav{
+         padding-top:20px;
+         background-color:#ccad00;
+         color:black;
+         display:flex;
+         flex-wrap:wrap;
+         justify-content:space-between;
+         }
+         .logo{
+         color:white;font-size:30px;margin-left:20px;  font-family:Lobster;}
+         .menu{
+         display:flex;
+         gap:30px;
+         margin-right:20px;
+         }
+         li{
+         list-style:none;}
+         .menu a{
+         text-decoration:none;
+         color:black;
+         font-size:20px;
+         font-family: "Poppins", sans-serif;
+         font-weight: 500;
+         font-style: normal;}
+         a{
+         text-decoration:none;
+         color:black;
+         font-size:20px;
+         font-family: "Poppins", sans-serif;
+         font-weight: 500;
+         font-style: normal;}
+         li a:hover{
+         color:white;
+         }
+         #toggle,.nav label{
+         display:none;}
+         @media(max-width:580px){
+         .menu{
+         width:100%;
+         flex-direction:column;
+         padding:20px 20px;
+         display:none;
+         align-items:center;}
+         .nav label{
+         display:block;}
+         #toggle:checked ~ .menu{
+         display:flex;
+         }}
+         .slider{
+         width:100%;
+         height:800px;
+         overflow:hidden;}
+         figure{
+         position:relative;
+         left:0;
+         width:400%;
+         animation:20s slide infinite;}
+         .slide{
+         position:relative;
+         width:25%;
+         float:left;
+         }
+         .slide img{
+         width:100%;
+         height:600px;
+         border:3px solid #ccad00;
+         }
+         .slider2{
+         width:100%;
+         height:400px;
+         overflow:hidden;}
+         .figure{
+         position:relative;
+         left:0;
+         width:400%;
+         animation:20s slid infinite;}
+         .slid{
+         position:relative;
+         width:10%;
+         float:left;
+         }
+         .slid img{
+         width:100%;
+         height:400px;}
+         figure:hover{
+         animation-play-state:paused;
+         }
+         .content {
+         width:100%;
+         height: 100%;
+         top:0;
+         Left:0;
+         position: absolute;
+         background:rgba(0,0,0,0.6);
+         display: flex;
+         justify-content: center;
+         align-items:left;
+         flex-direction: column;
+         opacity: 0;
+         transition: 0.6s;
+         }
+         .content button{
+         margin-left:300px;
+         padding:10px 10px;
+         font-size:20px;
+         font-weight:400;
+         background-color:#ccad00;
+         color:white;  font-family: 'Poppins', sans-serif;
+         margin-bottom:8px;
+         border-radius:5px;
+         outline:none;
+         border:none;
+         }
+         .content div{
+         font-size:50px;
+         font-weight:bold;
+         margin-top:200px;
+         margin-left:500px;
+         margin-bottom:200px;
+         color:white;}
+         .container1{
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-between;
+         padding: 20px;
+         }
+         .text-section {
+         margin-left: 40px;
+         font-size: 30px;
+         font-family: 'Sofia', sans-serif;
+         flex: 1;
+         min-width: 300px;
+         }
+         .title-text{
+         text-decoration:underline;
+         text-decoration-color:#ccad00;
+         font-size:40px;
+         }
+         .description {
+         color: gray;
+         margin-right:40px;
+         border: 1px solid white;
+         padding: 10px;
+         text-align: justify;
+         font-size: 20px;
+         font-family: 'Poppins', sans-serif;
+         }
+         .contact-link {
+         text-decoration: none;
+         color: purple;
+         }
+         .book-button {
+         margin-top: 10px;
+         padding:10px 10px;
+         font-size:20px;
+         font-weight:400;
+         background-color:#ccad00;
+         color:white;  font-family: 'Poppins', sans-serif;
+         margin-bottom:8px;
+         border-radius:5px;
+         outline: none;
+         border: none;
+         cursor: pointer;
+         }
+         .image1{
+         margin-right: 30px;
+         border-radius: 10px;
+         max-width:600px;
+         height:400px;
+         flex: 1;
+         min-width: 300px;
+         }
+         .card-title{
+         text-align:center;
+         font-size:30px;
+         font-weight:400;
+         font-family: "Poppins", sans-serif;
+         padding:10px;}
+         .content:hover{
+         opacity:1;
+         }
+         .content > *{
+         transform:translatey(25px);
+         transition:transform 0.6s;}
+         .content:hover *{
+         transform:translatey(0px);
+         }
+         @keyframes slide{
+         0%{
+         left:0;}
+         10%{left:0;}
+         20%{left:-100%;}
+         30%{
+         left: -100%;  }
+         40%{
+         left: -200%;
+         }
+         50%{
+         left: -200%;
+         }
+         55%{
+         left: -300%;
+         }
+         65%{
+         left: -300%;
+         }
+         66%{
+         left: -200%;
+         }
+         74%{
+         left: -200%;
+         }
+         75%{
+         left:-200%;
+         }
+         85%{
+         left: -100%;
+         }
+         1000%{
+         left: 0;
+         }
+         }
+         @keyframes slid{
+         0%{
+         left:0;}
+         10%{left:0;}
+         20%{left:-100%;}
+         30%{
+         left: -100%;  }
+         40%{
+         left: -200%;
+         }
+         50%{
+         left: -200%;
+         }
+         55%{
+         left: -300%;
+         }
+         65%{
+         left: -300%;
+         }
+         66%{
+         left: -200%;
+         }
+         74%{
+         left: -200%;
+         }
+         75%{
+         left:-200%;
+         }
+         85%{
+         left: -100%;
+         }
+         1000%{
+         left: 0;
+         }
+         }
+         .container {
+         background-color: black;
+         display: flex;
+         flex-wrap: wrap;
+         padding: 20px;
+         justify-content: space-between;
+         box-shadow: 5px 5px 5px 5px gray;
+         height: auto; 
+         }
+         .title {
+         color: white;
+         font-size: 30px;
+         font-weight: bold;
+         }
+         .title font {
+         color: #ccad00;
+         }
+         .form-group {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 20px;
+         }
+         .form-group input, .form-group button {
+         border-radius: 8px;
+         }
+         .form-group input[type="date"], .form-group input[type="number"] {
+         text-align: center;
+         font-weight: bold;
+         font-size: 15px;
+         }
+         .form-group button {
+         font-size: 20px;
+         font-weight: 300;
+         background-color: #ccad00;
+         color: white;
+         margin-bottom: 8px;
+         outline: none;
+         border: none;
+         cursor: pointer;
+         }
+         @media (max-width: 580px) {
+         .container {
+         flex-direction: column;
+         align-items: center;
+         }
+         .form-group button {
+         font-size: 20px;
+         font-weight: 300;
+         background-color: #ccad00;
+         color: white;
+         margin-bottom: 8px;
+         outline: none;
+         border: none;
+         cursor: pointer;
+         }
+         .form-group {
+         justify-content: center;
+         }
+         }
+         .card{
+         width:500px;
+         height:690px;
+         border-top-right-radius:7px;
+         border-top-left-radius:7px;
+         box-shadow:5px 5px 10px 6px gray;
+         }
+         .card button{
+         padding:10px 10px;
+         font-size:20px;
+         font-weight:400;
+         background-color:#ccad00;
+         color:white;  font-family: 'Poppins', sans-serif;
+         margin-bottom:8px;
+         border-radius:5px;
+         outline:none;
+         border:none;
+         margin-top:14px;
+         margin-right:230px;
+         padding:15px 15px;
+         margin-bottom:8px;}
+         .card-text{
+         color:gray;
+         font-size:24px;
+         line-height:30px;
+         text-align:justify;
+         padding:10px;
+         margin-left:30px;
+         margin-right:30px;
+         }
+         .card img{
+         width:100%;
+         height:350px;
+         border-top-right-radius:7px;
+         border-top-left-radius:7px}
+         button:hover{
+         opacity:0.6;}
+         .services{
+         border:2px solid #ADADAD;
+         padding:30px;
+         padding-left:50px;
+         padding-right:50px;
+         border-radius:5px;
+         width:300px;
+         }
+         .services div{
+         text-align:center;
+         font-size:40px;
+         padding:30px;
+         border:2px solid white;
+         padding-left:40px;
+         padding-right:40px;
+         border-radius:5px;
+         }
+         .services:hover{
+         color:white;
+         background-color:#ccad00;
+         }
+         .counter{
+         width:100%;
+         height:20vh;
+         background-image:url('/home/rguktrkvalley/Downloads/header.jpg');
+         background-size:cover;
+         }
+         .counter div{
+         font-size:40px;
+         color:white;
+         font-weight:500;}
+         .input-group{
+         position:relative;}
+         .input{
+         padding:15px;
+         width:350px;
+         max-width:350px;
+         box-sizing:border-box;
+         outline:none;
+         border:3px solid gray;
+         border-top:none;
+         border-right:none;
+         border-left:none;
+         font-size:20px;
+         }
+         .placeholder{
+         font-family: "Poppins", sans-serif;
+         position:absolute;
+         top:10px;
+         left:8px;
+         font-size:20px;
+         padding:0px 5px;
+         color:gray;
+         transition:0.3s ease;
+         pointer-events:none;}
+         .input:focus+.placeholder{
+         top: -20px;
+         color:black;
+         background-color:white;}
+         .form{
+         width:900px;
+         height:600px;
+         border-radius:10px;
+         box-shadow:0px 5px 15px rgba(0,0,0,0.25);
+         padding:60px;}
+         .form button{
+         margin-left:340px;margin-top:50px;padding:15px 15px;font-size:20px;font-weight:400;background-color:#ccad00;color:white;  font-family: 'Poppins', sans-serif;margin-bottom:8px;border-radius:10px;outline:none;border:none;}
+         .address{
+         background-color:#ccad00;
+         border-radius:20px;
+         width:440px;
+         height:560px;
+         padding:30px;
+         color:white;
+         text-align:center;
+         font-size:30px;
+         font-weight:200;
+         }
+         .address a{
+         color:white;}
+         .links-1{
+         display:flex;gap:20px;margin-top:50px;justify-content:space-around
+         }
+         .links-1 a:hover{
+         opacity:0.8;}
+         footer{
+         display: flex;
+         flex-wrap: wrap;
+         margin-top: auto;
+         background-color: #2d2e33;
+         padding: 60px 10%;
+         }
+         ul{
+         list-style: none;
+         }
+         .footer-col{
+         width: 25%;
+         }
+         .footer-col h4{
+         position: relative;
+         margin-bottom: 30px;
+         font-weight: 400;
+         font-size: 22px;
+         color:#ccad00;
+         text-transform: capitalize;
+         }
+         .footer-col h4::before{
+         content: '';
+         position: absolute;
+         left: 0;
+         bottom: -6px;
+         background-color: #27c0ac;
+         height: 2px;
+         width: 40px;
+         }
+         ul li:not(:last-child){
+         margin-bottom: 20px;
+         }
+         ul li a{
+         display: block;
+         font-size: 19px;
+         text-transform: capitalize;
+         color: #bdb6b6;
+         text-decoration: none;
+         transition: 0.4s;
+         }
+         ul li a:hover{
+         color: white;
+         padding-left: 2px;
+         }
+         .links a{
+         display: inline-block;
+         height: 44px;
+         width: 44px;
+         color: white;
+         margin: 0 8px 8px 0;
+         text-align: center;
+         line-height: 80px;
+         border-radius: 50%;
+         transition: 0.4s;
+         }
+         .links a:hover{
+         opacity:0.8;
+         }
+         @media(max-width: 740px){
+         .footer-col{
+         width: 50%;
+         margin-bottom: 30px;
+         text-align: center;
+         }
+         .footer-col h4::before{
+         all: unset;
+         }
+         }
+         @media(max-width: 555px){
+         .footer-col{
+         width: 100%;
+         }
+         }
+      </style>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+   </head>
+   <body>
+      <div class="nav">
+         <div class="logo"><img   width="35" height="35" src="https://img.icons8.com/ios-filled/50/fairytale.png"alt="fairytale"/>KingSukh</div>
+         <input type="checkbox" id="toggle">
+         <label for="toggle" ><a><i class="fa fa-bars"></a></i></label>
+         <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Rooms</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Contact</a></li>
+            <button style="height:40px;;width:120px;font-size:20px;font-weight:400;background-color:black;color:white;  font-family: 'Poppins', sans-serif;border-radius:10px;outline:none;border:none;">Book now</button>
+         </ul>
+      </div>
+      </div>
+      <div class="slider">
+         <figure>
+            <div class="slide">
+               <div class="image">
+                  <img src="/home/rguktrkvalley/Downloads/baranti.webp">
+                  <div class="content">
+                     <div>
+                        Spend your Holiday with KingSukh<br><br>
+                        <button>Book Now</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="slide">
+               <img    src="/home/rguktrkvalley/Downloads/1.jpg">
+               <div class="content">
+                  <div>
+                     Spend your Holiday with KingSukh<br><br>
+                     <button>Book Now</button>
+                  </div>
+               </div>
+            </div>
+            <div class="slide">
+               <img    src="/home/rguktrkvalley/Downloads/ayodhya.webp">
+               <div class="content">
+                  <div>
+                     Spend your Holiday with KingSukh<br><br>
+                     <button>Book Now</button>
+                  </div>
+               </div>
+            </div>
+            <div class="slide">
+               <div class="image">
+                  <img src="/home/rguktrkvalley/Downloads/palash.webp">
+                  <div class="content">
+                     <div>
+                        Spend your Holiday with KingSukh<br><br>
+                        <button>Book Now</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </figure>
+         <div class="container">
+            <div class="title">
+               Book your <br><font color="#ccad00">Rooms</font>
+            </div>
+            <div class="form-group">
+               <input type="date">
+               <input type="number" placeholder="Adults">
+               <input type="number" placeholder="Children">
+               <button>Check availability</button>
+            </div>
+         </div>
+      </div>
+      <br>
+      <div class="container1">
+         <div class="text-section" >
+            <div class="title-text">
+               About Us
+            </div>
+            <div class="description">
+               Embark on a tranquil journey at our Kingsukh Guest House, enveloped by the scenic allure of Biharinath Hill, Baranti Hill, Susunia Hill, Joychandi Hill, Garhpanchkot, Baranti Dam, Maithon Dam, and the captivating Panchat Dam. Revel in the embrace of comfort, relish delightful meals, and unwind in our verdant garden oasis. Your ideal retreat beckons, promising a harmonious blend of nature's beauty and heartfelt hospitality. Explore the hidden gems of Purulia, creating memories that linger long after your stay.<br><br>
+               <a href="#" class="contact-link">Address: Beside Barshal Water Tank, Manpur, Barhanti, West Bengal 723156<br>
+               Contact us: +91 9007062180</a><br><br>
+               <button class="book-button">Book Now</button>
+            </div>
+         </div>
+         <img class="image1" src="/home/rguktrkvalley/Downloads/out.jpg" alt="Scenic View">
+      </div>
+      <div style="margin-top:90px;margin-left:40px;font-weight:800;font-size:50px;color:#ccad00;text-shadow:3px 3px  gray">Our Living Rooms</div>
+      <br>
+      <br>
+      <div style="margin-left:40px;font-weight:600;font-size:50px;color:black;">The Most Memorable Rest <br>Time Starts Here.</div>
+      <br><br>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;">
+         <div class="card" style="margin-left:50px">
+            <img src="/home/rguktrkvalley/Downloads/small.jpg"/><br>
+            <div class="card-title" >Cozy Heaven Room</div>
+            <div  class="card-text">
+               Escape to comfort in our Cozy Haven Room,a snug retreat designed for intimate relaxation.<br><br>Starting from &nbsp
+               <div style="display:inline;font-weight:300;color:black"> Rs. 1000/night<br><button>Book 	Now</button></div>
+            </div>
+         </div>
+         <div class="card" style="margin-right:270px">
+            <img  src="/home/rguktrkvalley/Downloads/large.jpg"/><br>
+            <div class="card-title" >Spacious Serenity Suite</div>
+            <div class="card-text">
+               Indulge in luxury and ample space in our Spacious Serenity Suite, where tranquility meets roomy elegance.<br><br>Starting from &nbsp
+               <div style="display:inline;font-weight:300;color:black"> Rs. 1500/night<br><button>Book Now</button></div>
+            </div>
+         </div>
+      </div>
+      <br><br><br><br>
+      <div style="margin-left:40px;font-weight:800;font-size:50px;color:#ccad00;text-shadow:3px 3px  gray">Our Services</div>
+      <br>
+      <div style="margin-left:40px;font-size:40px;font-weight:bold;color:black;">Strive Only For The Best.</div>
+      <br>
+      <div style="margin-left:40px;display:flex;flex-wrap:wrap;gap:200px;	">
+         <div>
+            <div style="display:flex;flex-wrap:wrap;gap:20px">
+               <div class="services">
+                  <div><img width="50" height="50" src="https://img.icons8.com/ios/50/hitchhike.png" alt="hitchhike"/><br>Guide</div>
+               </div>
+               <div class="services">
+                  <div><img width="50" height="50" src="https://img.icons8.com/ios-filled/50/cyber-security.png" alt="cyber-security"/><br>Security</div>
+               </div>
+            </div>
+            <br>
+            <div style="display:flex;flex-wrap:wrap;gap:20px">
+               <div class="services">
+                  <div><img width="50" height="50" src="https://img.icons8.com/ios/50/tableware.png" alt="tableware"/><br>Food</div>
+               </div>
+               <div class="services">
+                  <div><img width="50" height="50" src="https://img.icons8.com/ios-filled/50/last-24-hours.png" alt="last-24-hours"/><br>Service</div>
+               </div>
+            </div>
+         </div>
+         <div>
+            <img style="border-radius:8px;border:3px solid #ccad00" width="680px"  height="470px"src="/home/rguktrkvalley/Downloads/service.jpg">
+         </div>
+      </div>
+      <br>
+      <div class="counter">
+         <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-around;padding:20px;">
+            <div>
+               100+
+               <hr width="120px">
+               <div style="font-size:30px;color:white;">Bookings Completed</div>
+            </div>
+            <div>
+               150+
+               <hr  width="120px">
+               <div style="font-size:30px;color:white;">Happy Customers</div>
+            </div>
+         </div>
+      </div>
+      <div style="margin-top:70px;margin-left:40px;font-weight:800;font-size:50px;color:#ccad00;text-shadow:3px 3px  gray">
+         Our Gallery
+         <hr style="color:gray;width:260px;margin-top:5px;">
+      </div>
+      <br>
+      <div class="slider2">
+         <figure class="figure">
+            <div class="slid">
+               <img src="/home/rguktrkvalley/Downloads/recep.jpg">
+            </div>
+            <div class="slid">
+               <img src="/home/rguktrkvalley/Downloads/mithonDam.webp">
+            </div>
+            <div class="slid">
+               <img src="/home/rguktrkvalley/Downloads/baranti.webp">
+            </div>
+            <div class="slid">
+               <img src="/home/rguktrkvalley/Downloads/1.jpg">
+            </div>
+            <div class="slid">
+               <img src="/home/rguktrkvalley/Downloads/small.jpg">
+            </div>
+            <div class="slid">
+               <img src="/home/rguktrkvalley/Downloads/large.jpg">
+            </div>
+            <div class="slid">
+               <img src="/home/rguktrkvalley/Downloads/palash.webp">
+            </div>
+            <div class="slid">
+               <img src="/home/rguktrkvalley/Downloads/out.jpg">
+            </div>
+            <div class="slid">
+               <img src="/home/rguktrkvalley/Downloads/ayodhya.webp">
+            </div>
+            <div class="slid">
+               <img src="/home/rguktrkvalley/Downloads/flower.jpg">
+            </div>
+         </figure>
+      </div>
+      </div>
+      <br><br><br>
+      <div style="display:flex;flex-wrap:wrap;gap:100px;margin-left:100px;">
+         <div class="address">
+            <div style="align-items:center;">
+               <img  width="40" height="40" src="https://img.icons8.com/ios-filled/50/address--v1.png" alt="address--v1"/><br>
+               <a href="#">Beside Barshal Water Tank,
+               Manpur, Barhanti,
+               West Bengal 723156</a><br><br>
+               <img   width="50" height="50" src="https://img.icons8.com/ios-filled/50/000000/secured-letter--v1.png" alt="secured-letter--v1"><br>
+               <a href="#">kkghosh0099@gmail.com</a><br><br>
+               <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/ringer-volume.png" alt="ringer-volume"/><br><a href="#">91+9007062180</a>
+               <div class="links-1">
+                  <a style="font-size:40px;" href="#"><i class="fab fa-facebook"></i></a>
+                  <a style="font-size:40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                  <a style="font-size:40px;" href="#"><i class="fab fa-twitter"></i></a>
+                  <a style="font-size:40px;" href="#"><i class="fab fa-instagram"></i></a>
+               </div>
+            </div>
+         </div>
+         <form class="form">
+            <div style="color:black;font-size:50px;font-weight:bold;text-shadow:3px 3px 3px gray;">Send a Message</div>
+            <br><br>
+            <div style="display:flex;gap:60px">
+               <div class="input-group">
+                  <input  class="input" type="text">
+                  <label class="placeholder">First Name</label>
+               </div>
+               <div class="input-group">
+                  <input  class="input" type="text">
+                  <label class="placeholder">Last Name</label>
+               </div>
+            </div>
+            <div style="display:flex;gap:60px;margin-top:80px;">
+               <div class="input-group">
+                  <input  class="input" type="text">
+                  <label class="placeholder">Email Address</label>
+               </div>
+               <div class="input-group">
+                  <input   class="input" type="text">
+                  <label class="placeholder">Mobile Number</label>
+               </div>
+            </div>
+            <div style="margin-top:50px;">
+               <div class="input-group"><br>
+                  <input  class="input" type="text">
+                  <label class="placeholder">Enter your Message here......</label>
+               </div>
+            </div>
+            <button >Book Now</button>
+         </form>
+      </div>
+      <br><br><br>
+      <footer>
+         <div class="footer-col">
+            <h4>Kingsukh Guest House</h4>
+            <ul>
+               <li><a href="#">Discover a world of comfort, luxury, and adventure as you explore our curated selection of hotels, making every moment of your getaway truly extraordinary.</a></li>
+               <li><button style="padding:10px 10px;font-size:20px;font-weight:400;background-color:#ccad00;color:white;  font-family: 'Poppins', sans-serif;border-radius:5px;outline:none;border:none;">Book Now</button></li>
+            </ul>
+         </div>
+         <div class="footer-col">
+            <h4>Quick links</h4>
+            <ul>
+               <li><a href="#">   Browse Destinations</a></li>
+               <li><a href="#">Special Offers & Packages</a></li>
+               <li><a href="#">Room Types & Amenities</a></li>
+               <li><a href="#">Customer Reviews & Ratings</a></li>
+               <li><a href="#">Customer Reviews & Ratings</a></li>
+            </ul>
+         </div>
+         <div class="footer-col">
+            <h4> OUR SERVICES</h4>
+            <ul>
+               <li><a href="#">Concierge Assistance</a></li>
+               <li><a href="#">Flexible Booking Options</a></li>
+               <li><a href="#">Wellness & Recreation</a></li>
+               <li><a href="#">Airport Transfers</a></li>
+            </ul>
+         </div>
+         <div class="footer-col">
+         <h4>  CONTACT US</h4>
+         <ul>
+         <li><a href="#"> Address: Beside Barshal Water Tank, Manpur, Barhanti, West Bengal 723156 </a></li>
+         <li><a href="#">kkghosh0099@gmail.com</a></li>
+         <li><a href="#">+91 9007062180</a></li>
+         <div class="links">
+            <a href="#"><img  width="40px" height="40px" src="/home/rguktrkvalley/Downloads/instagram.png"></i></a>                          
+            <a href="#"><img  width="40px" height="40px" src="/home/rguktrkvalley/Downloads/facebook.png"></i></a>
+            <a href="#"><img  width="40px" height="40px" src="/home/rguktrkvalley/Downloads/youtube.png"></i></a>
+            <a href="#"><img  width="40px" height="40px" src="/home/rguktrkvalley/Desktop/download.png"></i></a>
+         </div>
+      </footer>
+   </body>
+</html>
+
